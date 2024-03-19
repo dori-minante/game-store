@@ -44,7 +44,7 @@ public class ProdutoController {
 	}
 
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Categoria>> getByNome(@PathVariable String nome) {
+	public ResponseEntity<List<Produto>> getByNome(@PathVariable String nome) {
 		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 
@@ -53,7 +53,7 @@ public class ProdutoController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
 	}
 
-	@PutMapping
+	@PutMapping("/{id}")
 	public ResponseEntity<Produto> put(@Valid @RequestBody Produto produto) {
 		return produtoRepository.findById(produto.getId())
 				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto)))
