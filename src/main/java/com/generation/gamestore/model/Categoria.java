@@ -39,9 +39,9 @@ public class Categoria {
 	@Column(name = "data_categoria")
 	private LocalDateTime dataCategoria;
 
-//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.ALL)
-//	@JsonIgnoreProperties("categoria")
-//	private List<Produto> produto;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
+	private List<Produto> produto;
 
 	public Long getId() {
 		return id;
@@ -75,13 +75,13 @@ public class Categoria {
 		this.dataCategoria = dataCategoria;
 	}
 
-//	public List<Produto> getProduto() {
-//		return produto;
-//	}
-//
-//	public void setProduto(List<Produto> produto) {
-//		this.produto = produto;
-//	}
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
+	}
 
 //	@Override
 //	public String toString() {

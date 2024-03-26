@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.generation.gamestore.model.Categoria;
 import com.generation.gamestore.model.Produto;
 import com.generation.gamestore.repository.ProdutoRepository;
 
@@ -53,7 +52,7 @@ public class ProdutoController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping
 	public ResponseEntity<Produto> put(@Valid @RequestBody Produto produto) {
 		return produtoRepository.findById(produto.getId())
 				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto)))
